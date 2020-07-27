@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="SeguridadParte2">
+  <ClassDiagramComponents>
+    <Class name="BadInstruction" package="seguridadparte2" visibility="public" xPosition="753.0" yPosition="191.0">
+      <Fields>
+        <Field name="badLine" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="line"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getBadLine" returnType="String" visibility="public"/>
+        <Method name="setBadLine" returnType="void" visibility="public">
+          <Argument type="String" name="badLine"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CovertChannel" package="seguridadparte2" visibility="public" xPosition="305.0" yPosition="150.0">
+      <Fields>
+        <Field name="OUTPUT_URL" type="String" visibility="private"/>
+        <Field name="NO_BYTE" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="execute" returnType="void" visibility="public">
+          <Argument type="String" name="fileUrl"/>
+          <Argument type="boolean" name="v"/>
+        </Method>
+        <Method name="processLine" returnType="void" visibility="private">
+          <Argument type="String" name="currentLine"/>
+          <Argument type="boolean" name="v"/>
+          <Argument type="FileWriter" name="writer"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="InstructionObject" package="seguridadparte2" visibility="public" xPosition="34.0" yPosition="529.0">
+      <Fields>
+        <Field name="typeOfInstruction" type="String" visibility="private"/>
+        <Field name="subjectName" type="String" visibility="private"/>
+        <Field name="objectName" type="String" visibility="private"/>
+        <Field name="value" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="line"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="typeOfInstruction"/>
+          <Argument type="String" name="subjectName"/>
+          <Argument type="String" name="objectName"/>
+          <Argument type="java.lang.Object" name="params"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getTypeOfInstruction" returnType="String" visibility="public"/>
+        <Method name="setTypeOfInstruction" returnType="void" visibility="public">
+          <Argument type="String" name="typeOfInstruction"/>
+        </Method>
+        <Method name="getSubjectName" returnType="String" visibility="public"/>
+        <Method name="setSubjectName" returnType="void" visibility="public">
+          <Argument type="String" name="subjectName"/>
+        </Method>
+        <Method name="getObjectName" returnType="String" visibility="public"/>
+        <Method name="setObjectName" returnType="void" visibility="public">
+          <Argument type="String" name="objectName"/>
+        </Method>
+        <Method name="getValue" returnType="int" visibility="public"/>
+        <Method name="setValue" returnType="void" visibility="public">
+          <Argument type="int" name="value"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getCurrentStateAsString" returnType="String" visibility="private"/>
+        <Method name="getWordsIgnoredSpace" returnType="ArrayList&lt;String&gt;" visibility="private">
+          <Argument type="String" name="line"/>
+        </Method>
+        <Method name="executeInstruction" returnType="void" visibility="private">
+          <Argument type="InstructionObject" name="builtInstruction"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Object" package="seguridadparte2" visibility="public" xPosition="1682.0" yPosition="55.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="value" type="int" visibility="private"/>
+        <Field name="securityLevel" type="SecurityLevel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="SecurityLevel" name="securityLevel"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getSecurityLevel" returnType="SecurityLevel" visibility="public"/>
+        <Method name="setSecurityLevel" returnType="void" visibility="public">
+          <Argument type="SecurityLevel" name="securityLevel"/>
+        </Method>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getValue" returnType="int" visibility="public"/>
+        <Method name="setValue" returnType="void" visibility="public">
+          <Argument type="int" name="value"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="java.lang.Object" name="obj"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ObjectManager" package="seguridadparte2" visibility="public" xPosition="1031.0" yPosition="150.0">
+      <Fields>
+        <Field name="objects" type="ArrayList&lt;Object&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getObjects" returnType="ArrayList&lt;Object&gt;" visibility="public"/>
+        <Method name="Read" returnType="void" visibility="public">
+          <Argument type="Subject" name="subject"/>
+          <Argument type="String" name="objectName"/>
+          <Argument type="boolean" name="canRead"/>
+        </Method>
+        <Method name="Write" returnType="void" visibility="public">
+          <Argument type="String" name="objectName"/>
+          <Argument type="int" name="value"/>
+        </Method>
+        <Method name="getObjectByName" returnType="Object" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="Create" returnType="void" visibility="public">
+          <Argument type="String" name="objectName"/>
+          <Argument type="SecurityLevel" name="securityLevel"/>
+        </Method>
+        <Method name="Destroy" returnType="void" visibility="public">
+          <Argument type="String" name="objectName"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ReferenceMonitor" package="seguridadparte2" visibility="public" xPosition="771.0" yPosition="491.0">
+      <Fields>
+        <Field name="objectManager" type="ObjectManager" visibility="private"/>
+        <Field name="badInstructions" type="ArrayList&lt;BadInstruction&gt;" visibility="private"/>
+        <Field name="OBJECT_NAME" type="String" visibility="private"/>
+        <Field name="LOG_URL" type="String" visibility="private"/>
+        <Field name="NUMBER_BITS" type="int" visibility="private"/>
+        <Field name="byteBuffer" type="int[]" visibility="package"/>
+        <Field name="bitCount" type="int" visibility="package"/>
+        <Field name="logWriter" type="FileWriter" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getObjectManager" returnType="ObjectManager" visibility="public"/>
+        <Method name="setObjectManager" returnType="void" visibility="public">
+          <Argument type="ObjectManager" name="objectManager"/>
+        </Method>
+        <Method name="ExecuteRead" returnType="void" visibility="public">
+          <Argument type="InstructionObject" name="instruction"/>
+        </Method>
+        <Method name="ExecuteWrite" returnType="void" visibility="public">
+          <Argument type="InstructionObject" name="instruction"/>
+        </Method>
+        <Method name="Create" returnType="void" visibility="public">
+          <Argument type="String" name="subjectName"/>
+        </Method>
+        <Method name="Destroy" returnType="void" visibility="public">
+          <Argument type="String" name="subjectName"/>
+        </Method>
+        <Method name="canRead" returnType="boolean" visibility="private">
+          <Argument type="SecurityLevel" name="subjectSecurityLevel"/>
+          <Argument type="SecurityLevel" name="objSecurityLevel"/>
+        </Method>
+        <Method name="canWrite" returnType="boolean" visibility="private">
+          <Argument type="SecurityLevel" name="subjectSecurityLevel"/>
+          <Argument type="SecurityLevel" name="objSecurityLevel"/>
+        </Method>
+        <Method name="saveBadInstruction" returnType="void" visibility="public">
+          <Argument type="BadInstruction" name="badInstruction"/>
+        </Method>
+        <Method name="executeRun" returnType="void" visibility="public">
+          <Argument type="String" name="subjectName"/>
+          <Argument type="boolean" name="v"/>
+          <Argument type="FileWriter" name="writer"/>
+        </Method>
+        <Method name="convertBitsToByte" returnType="char" visibility="private">
+          <Argument type="int[]" name="byteBuffer"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SecureSystem" package="seguridadparte2" visibility="public" xPosition="1469.0" yPosition="600.0">
+      <Fields>
+        <Field name="FILE_URL" type="String" visibility="private"/>
+        <Field name="subjects" type="ArrayList&lt;Subject&gt;" visibility="private"/>
+        <Field name="secureSystemInstance" type="SecureSystem" visibility="private" isStatic="true"/>
+        <Field name="referenceMonitor" type="ReferenceMonitor" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private"/>
+      </Constructors>
+      <Methods>
+        <Method name="GetInstance" returnType="SecureSystem" visibility="public" isStatic="true"/>
+        <Method name="getReferenceMonitor" returnType="ReferenceMonitor" visibility="public"/>
+        <Method name="createSubject" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="SecurityLevel" name="securityLevel"/>
+        </Method>
+        <Method name="PrintState" returnType="void" visibility="public">
+          <Argument type="InstructionObject" name="instruction"/>
+        </Method>
+        <Method name="ReadFile" returnType="void" visibility="public"/>
+        <Method name="processLine" returnType="void" visibility="private">
+          <Argument type="String" name="currentLine"/>
+        </Method>
+        <Method name="getSubjectByName" returnType="Subject" visibility="public">
+          <Argument type="String" name="subjectName"/>
+        </Method>
+        <Method name="getSubjects" returnType="ArrayList&lt;Subject&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Subject" package="seguridadparte2" visibility="public" xPosition="1859.0" yPosition="930.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="temp" type="int" visibility="private"/>
+        <Field name="securityLevel" type="SecurityLevel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="SecurityLevel" name="level"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getSecurityLevel" returnType="SecurityLevel" visibility="public"/>
+        <Method name="setSecurityLevel" returnType="void" visibility="public">
+          <Argument type="SecurityLevel" name="securityLevel"/>
+        </Method>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getTemp" returnType="int" visibility="public"/>
+        <Method name="setTemp" returnType="void" visibility="public">
+          <Argument type="int" name="temp"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Enum name="SecurityLevel" package="seguridadparte2" visibility="public" xPosition="1881.0" yPosition="561.0">
+      <Literals>
+        <Literal name="LOW"/>
+        <Literal name="HIGH"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="objects" source="seguridadparte2.ObjectManager" target="seguridadparte2.Object" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Object&gt;"/>
+    <HasRelation name="subjects" source="seguridadparte2.SecureSystem" target="seguridadparte2.Subject" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Subject&gt;"/>
+    <HasRelation name="securityLevel" source="seguridadparte2.Subject" target="seguridadparte2.SecurityLevel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="seguridadparte2.Object" target="seguridadparte2.Object" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="objectManager" source="seguridadparte2.ReferenceMonitor" target="seguridadparte2.ObjectManager" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="instruction" source="seguridadparte2.SecureSystem" target="seguridadparte2.InstructionObject" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="referenceMonitor" source="seguridadparte2.CovertChannel" target="seguridadparte2.ReferenceMonitor" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="securityLevel" source="seguridadparte2.Object" target="seguridadparte2.SecurityLevel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="badInstructions" source="seguridadparte2.ReferenceMonitor" target="seguridadparte2.BadInstruction" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;BadInstruction&gt;"/>
+    <HasRelation name="referenceMonitor" source="seguridadparte2.SecureSystem" target="seguridadparte2.ReferenceMonitor" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="referenceMonitor" source="seguridadparte2.InstructionObject" target="seguridadparte2.ReferenceMonitor" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

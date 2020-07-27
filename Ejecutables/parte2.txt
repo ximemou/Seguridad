@@ -1,0 +1,8 @@
+Imagine un sistema con sujetos y objetos. Los objetos en este sistema son variables enteras simples.
+Cada objeto tiene un nombre y un valor (inicialmente 0). 
+Cada sujeto tiene un nombre y una variable entera TEMP que registra el valor que leyó más recientemente (también inicialmente 0). 
+Los sujetos pueden realizar operaciones READ o WRITE en los objetos.
+Para un READ, el sujeto lee el valor actual del objeto y guarda ese valor en su variable TEMP (un READ posterior lo aplastará). 
+Cuando un sujeto hace un WRITE, el valor del objeto se actualiza.
+Los objetos son administrados por la clase ObjectManager como un sistema de archivos muy simple que Lee y Escribe objetos por nombre.
+La entrada a su sistema es un archivo de comandos.

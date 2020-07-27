@@ -1,0 +1,5 @@
+writ lyle lobj 10
+write    ismael hobj 30
+read       hal             lobj
+write        lyle hobj      54
+bye

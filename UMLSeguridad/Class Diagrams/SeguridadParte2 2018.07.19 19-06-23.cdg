@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="SeguridadParte2">
+  <ClassDiagramComponents>
+    <Class name="InstructionObject" package="seguridadparte2" visibility="public" xPosition="9.0" yPosition="59.0">
+      <Fields>
+        <Field name="typeOfInstruction" type="String" visibility="private"/>
+        <Field name="subjectName" type="String" visibility="private"/>
+        <Field name="objectName" type="String" visibility="private"/>
+        <Field name="value" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="line"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="typeOfInstruction"/>
+          <Argument type="String" name="subjectName"/>
+          <Argument type="String" name="objectName"/>
+          <Argument type="java.lang.Object" name="params"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getTypeOfInstruction" returnType="String" visibility="public"/>
+        <Method name="setTypeOfInstruction" returnType="void" visibility="public">
+          <Argument type="String" name="typeOfInstruction"/>
+        </Method>
+        <Method name="getSubjectName" returnType="String" visibility="public"/>
+        <Method name="setSubjectName" returnType="void" visibility="public">
+          <Argument type="String" name="subjectName"/>
+        </Method>
+        <Method name="getObjectName" returnType="String" visibility="public"/>
+        <Method name="setObjectName" returnType="void" visibility="public">
+          <Argument type="String" name="objectName"/>
+        </Method>
+        <Method name="getValue" returnType="int" visibility="public"/>
+        <Method name="setValue" returnType="void" visibility="public">
+          <Argument type="int" name="value"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getCurrentStateAsString" returnType="String" visibility="private"/>
+        <Method name="getWordsIgnoredSpace" returnType="ArrayList&lt;String&gt;" visibility="private">
+          <Argument type="String" name="line"/>
+        </Method>
+        <Method name="executeInstruction" returnType="void" visibility="private">
+          <Argument type="InstructionObject" name="builtInstruction"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="LengthValidator" package="seguridadparte2.InstructionValidations.Filters" visibility="public" xPosition="334.0" yPosition="763.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="executeFilter" returnType="InstructionObject" visibility="public">
+          <Argument type="InstructionObject" name="instruction"/>
+          <Argument type="ArrayList&lt;String&gt;" name="words"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ObjectValidator" package="seguridadparte2.InstructionValidations.Filters" visibility="public" xPosition="1394.0" yPosition="583.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="executeFilter" returnType="InstructionObject" visibility="public">
+          <Argument type="InstructionObject" name="instruction"/>
+          <Argument type="ArrayList&lt;String&gt;" name="words"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SubjectValidator" package="seguridadparte2.InstructionValidations.Filters" visibility="public" xPosition="137.0" yPosition="583.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="executeFilter" returnType="InstructionObject" visibility="public">
+          <Argument type="InstructionObject" name="instruction"/>
+          <Argument type="ArrayList&lt;String&gt;" name="words"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="TypeValidator" package="seguridadparte2.InstructionValidations.Filters" visibility="public" xPosition="810.0" yPosition="635.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="executeFilter" returnType="InstructionObject" visibility="public">
+          <Argument type="InstructionObject" name="instruction"/>
+          <Argument type="ArrayList&lt;String&gt;" name="words"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ValueValidator" package="seguridadparte2.InstructionValidations.Filters" visibility="public" xPosition="1175.0" yPosition="763.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="executeFilter" returnType="InstructionObject" visibility="public">
+          <Argument type="InstructionObject" name="instruction"/>
+          <Argument type="ArrayList&lt;String&gt;" name="words"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Pipeline" package="seguridadparte2.InstructionValidations" visibility="public" isAbstract="true" xPosition="1060.0" yPosition="59.0">
+      <Fields>
+        <Field name="filters" type="List&lt;IFilter&gt;" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="Register" returnType="void" visibility="public">
+          <Argument type="IFilter" name="filter"/>
+        </Method>
+        <Method name="PerformOperation" returnType="InstructionObject" visibility="public">
+          <Argument type="InstructionObject" name="instruction"/>
+          <Argument type="ArrayList&lt;String&gt;" name="words"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ValidationPipeline" package="seguridadparte2.InstructionValidations" visibility="public" xPosition="688.0" yPosition="338.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initPipeline" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="IFilter" package="seguridadparte2.InstructionValidations" visibility="public" xPosition="1074.0" yPosition="338.0">
+      <Methods>
+        <Method name="executeFilter" returnType="InstructionObject" visibility="package">
+          <Argument type="InstructionObject" name="instruction"/>
+          <Argument type="ArrayList&lt;String&gt;" name="words"/>
+        </Method>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="filters" source="seguridadparte2.InstructionValidations.Pipeline" target="seguridadparte2.InstructionValidations.IFilter" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;IFilter&gt;"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="seguridadparte2.InstructionValidations.Filters.ObjectValidator" target="seguridadparte2.InstructionValidations.IFilter"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="seguridadparte2.InstructionValidations.Filters.ValueValidator" target="seguridadparte2.InstructionValidations.IFilter"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="seguridadparte2.InstructionValidations.Filters.LengthValidator" target="seguridadparte2.InstructionValidations.IFilter"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="seguridadparte2.InstructionValidations.Filters.SubjectValidator" target="seguridadparte2.InstructionValidations.IFilter"/>
+    <UseRelation name="pipeline" source="seguridadparte2.InstructionObject" target="seguridadparte2.InstructionValidations.ValidationPipeline" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="seguridadparte2.InstructionValidations.Pipeline" target="seguridadparte2.InstructionValidations.IFilter" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="seguridadparte2.InstructionValidations.Filters.TypeValidator" target="seguridadparte2.InstructionValidations.IFilter"/>
+    <IsRelation name="is" source="seguridadparte2.InstructionValidations.ValidationPipeline" target="seguridadparte2.InstructionValidations.Pipeline"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
